@@ -59,7 +59,7 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Created At</th>
-                                {{--  <th>Action</th>  --}}
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,7 +73,7 @@
                                 <td>{{$patal->email}}</td>
                                 <td>{{$patal->phone}}</td>
                                 <td>{{$patal->created_at}}</td>
-                                {{--  <td>
+                                <td>
                                     <a href="{{route("patal.show", [$patal->id])}}"
                                         class="btn btn-sm bg-success"><i class="fas fa-eye"> Show</i></a>
 
@@ -88,7 +88,7 @@
                                                 class="fas fa-trash"> Delete</i></button>
                                     </form>
 
-                                </td>  --}}
+                                </td>
                             </tr>
                             @empty
                             <p>No Data patal</p>

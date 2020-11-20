@@ -58,9 +58,10 @@ class PatalController extends Controller
      */
     public function show($id)
     {
+        $title = 'show';
         $patal = Patal::where('id', $id)->first();
 
-        return view('patal.show', ['patal' => $patal]);
+        return view('patal.form', ['patals' => $patal, 'title' => $title]);
     }
 
     /**
@@ -71,8 +72,8 @@ class PatalController extends Controller
      */
     public function edit($id)
     {
-        $patal = Patal::findOrFail($id);
-        return view('patal.form', ['patal' => $patal]);
+        $patals = Patal::findOrFail($id);
+        return view('patal.form', ['patals' => $patals]);
     }
 
     /**
@@ -85,7 +86,12 @@ class PatalController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validated();
+         $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:patals,email,' . $id,
+            'phone' => 'required'
+        ]);
+
 
         $Patal = Patal::findOrFail($id);
         $Patal->name = $request->input('name');
